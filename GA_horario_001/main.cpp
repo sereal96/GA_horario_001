@@ -12,12 +12,11 @@ int main(int argc, char* args[])
 {
 	Herramientas h1;// = new Herramientas();
 	
-	h1.combierteEnteroBinario8Bits(20);
 
-	Individuo i1;
-	i1.crearGenomaS(5, 6, 2, 20, 5, 20); //3   10=>10+9+8+7+6+5+4+3+2+1 = 55
-	i1.printindividuo();
-	i1.calculaAptitudIndividuo();
+	//Individuo i1;
+	//i1.crearGenomaS(5, 6, 2, 20, 5, 20); //3   10=>10+9+8+7+6+5+4+3+2+1 = 55
+	//i1.printindividuo();
+	//i1.calculaAptitudIndividuo();
 	//std::cout << "\n";
 	//std::cout << std::to_string(i1.getAptitud());
 

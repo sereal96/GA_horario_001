@@ -92,7 +92,7 @@ void Individuo::crearCromosomaCurso(int cromosoma_curso_, int limite_superior_cu
 {
 	if (cromosoma_curso_ <= limite_superior_curso)
 	{
-		this->setCromosomaCurso(h1.combierteEnteroBinario(cromosoma_curso_));
+		this->setCromosomaCurso(h1.combierteEnteroBinario8Bits(cromosoma_curso_));
 	}
 	else
 	{
@@ -114,7 +114,7 @@ void Individuo::crearCromosomaProfesor(int cromosoma_profesor_, int limite_super
 {
 	if (cromosoma_profesor_ <= limite_superior_profe)
 	{
-		this->setCromosomaProfesor(h1.combierteEnteroBinario(cromosoma_profesor_));
+		this->setCromosomaProfesor(h1.combierteEnteroBinario8Bits(cromosoma_profesor_));
 	}
 	else
 	{
@@ -136,7 +136,7 @@ void Individuo::crearCromosomaMateria(int cromosoma_materia_, int limite_superio
 {
 	if (cromosoma_materia_ <= limite_superior_mate)
 	{
-		this->setCromosomaMateria(h1.combierteEnteroBinario(cromosoma_materia_));
+		this->setCromosomaMateria(h1.combierteEnteroBinario8Bits(cromosoma_materia_));
 	}
 	else
 	{
@@ -158,7 +158,7 @@ void Individuo::crearCromosomaDia(int cromosoma_dia_, int limite_superior_dia)
 {
 	if (cromosoma_dia_ <= limite_superior_dia)
 	{
-		this->setCromosomaDia(h1.combierteEnteroBinario(cromosoma_dia_));
+		this->setCromosomaDia(h1.combierteEnteroBinario8Bits(cromosoma_dia_));
 	}
 	else
 	{
@@ -180,7 +180,7 @@ void Individuo::crearCromosomaHora(int cromosoma_hora_, int limite_superior_hora
 {
 	if (cromosoma_hora_ <= limite_superior_hora)
 	{
-		this->setCromosomaHora(h1.combierteEnteroBinario(cromosoma_hora_));
+		this->setCromosomaHora(h1.combierteEnteroBinario8Bits(cromosoma_hora_));
 	}
 	else
 	{
@@ -202,7 +202,7 @@ void Individuo::crearCromosomaAula(int cromosoma_aula_, int limite_superior_aula
 {
 	if (cromosoma_aula_ <= limite_superior_aula)
 	{
-		this->setCromosomaAula(h1.combierteEnteroBinario(cromosoma_aula_));
+		this->setCromosomaAula(h1.combierteEnteroBinario8Bits(cromosoma_aula_));
 	}
 	else
 	{
