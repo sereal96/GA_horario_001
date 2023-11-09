@@ -89,6 +89,9 @@ public:
 
 	std::vector<categoria> getGenomaS();
 	categoria getGenomaS(int pos);
+	void setGenomaS(int pos, categoria valor);
+	int sizeGenomaS();
+	
 
 	void crearGenomaS(int numero_de_dias, int numero_de_periodos, int numero_de_cursos);
 	void crearGenomaS(int numero_de_dias_, int numero_de_periodos_, int numero_de_cursos_,
@@ -144,11 +147,19 @@ public:
 
 	int calculaAptitudIndividuo();
 
+	
+	int getNumeroDeDias();
+	int getNumeroDePeriodos();
+	int getNumeroDeCursos();
+	int getNumeroDeProfesores();
+	int getNumeroDeMaterias();
+	int getNumeroDeAulas();
+
 	Herramientas h1;
 
 	std::vector<std::string> esqueleto;
 	std::vector<std::string> generado;
-
+	double aptitud = -1;
 private:
 	//Genoma compuesto por cromosomas
 	std::vector<int> cromosoma_curso; //Curso es el nombre
@@ -160,7 +171,7 @@ private:
 
 	//std::vector<std::vector<int>> genoma;
 	std::vector <categoria> genomaS;
-	double aptitud = -1;
+	//double aptitud = -1;
 
 	double aptitud_curso = -1;
 	double aptitud_profesor = -1;

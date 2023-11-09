@@ -1,8 +1,9 @@
 #include <string>
 
 #include "Herramientas.h"
-#include "Individuo.h"
-#include "Poblacion.h"
+//#include "Individuo.h"
+//#include "Poblacion.h"
+#include "AlgoritmoGenetico.h"
 
 std::string aux = "";
 
@@ -19,44 +20,47 @@ int main(int argc, char* args[])
 	//i1.calculaAptitudIndividuo();
 	//std::cout << "\n";
 	//std::cout << std::to_string(i1.getAptitud());
-
+	//return 0;
 
 	
 	
 
-	int poblacionTamano = 1; //populationSize = 100;
-	double gradoDeMuatacion = 0.01;// mutationRate = 0.01;
-	double crossoverRate = 0.9;
-	int elitismoCont = 2;// elitismCount = 2;
-	int tamanoDeTorneo = 5;// tournamentSize = 5;
-
-	Poblacion pob;
+	Poblacion poblacion;
+	int poblacionTamano = 100; //populationSize = 100;
 	int numero_de_dias = 5;
 	int numero_de_periodos = 6;
-	int numero_de_cursos = 2;
+	int numero_de_cursos = 4;
 	int numero_de_profesores = 20;
 	int numero_de_materias = 5;
 	int numero_de_aulas = 20;
-	pob.GeneradorDePoblacion(poblacionTamano, numero_de_dias, numero_de_periodos, numero_de_cursos, numero_de_profesores, numero_de_materias, numero_de_aulas);
+	poblacion.GeneradorDePoblacion(poblacionTamano, numero_de_dias, numero_de_periodos, numero_de_cursos, numero_de_profesores, numero_de_materias, numero_de_aulas);
+	poblacion.calculaAptitudPoblacion();
 
+	std::cout << "aptitud poblacion = " << std::to_string(poblacion.getAptitudPoblacion()) << "\n";;
+
+	double gradoDeMuatacion = 0.01;// mutationRate = 0.01;
+	double crossoverRate = 0.9;
+	int elitismoCont = 2;// elitismCount = 2;
+	int tamanoDeTorneo = 10;// tournamentSize = 5;
+	AlgoritmoGenetico ag = AlgoritmoGenetico(poblacionTamano, gradoDeMuatacion, crossoverRate, elitismoCont, tamanoDeTorneo);
 
 	// Keep track of current generation
 	int generation = 1;
 	// Start evolution loop
 	// TODO: Add termination condition
-	while (generation <= 10)//(ga.isTerminationConditionMet(generation, 1000) == false && ga.isTerminationConditionMet(population) == false)
+	while (generation <= 100)//(ga.isTerminationConditionMet(generation, 1000) == false && ga.isTerminationConditionMet(population) == false)
 	{
 
 		//System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
 
 		// Apply crossover
-		//population = ga.crossoverPopulation_1(population, 3);
-
+		poblacion = ag.crossoverPopulation_1(poblacion, 3);
+		std::cout << "generacion "<< std::to_string(generation)<<" aptitud poblacion = " << std::to_string(poblacion.getAptitudPoblacion())<<"\n";
 		// TODO: Apply mutation
 		//population = ga.mutatePopulation(population, timetable);
 
 		// TODO: Evaluate population
-
+		poblacion.calculaAptitudPoblacion();
 
 		// Increment the current generation
 		generation++;
@@ -65,6 +69,9 @@ int main(int argc, char* args[])
 		//OutputDebugStringA(aux.c_str());
 	}
 
+	poblacion.ordenarPoblacionDecendente();
+
+	poblacion.getPobladorPorCelda(poblacion.size()-1).printindividuo();
 	//print resultados
 
 

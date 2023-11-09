@@ -1,4 +1,10 @@
 #include "Poblacion.h"
+#include <algorithm>
+
+struct SortByAptitud
+{
+	bool operator() (Individuo const& L, Individuo const& R) { return L.aptitud < R.aptitud; }
+};
 
 Poblacion::Poblacion()
 {
@@ -12,6 +18,41 @@ Poblacion::Poblacion(int poblacionSize)
 
 Poblacion::~Poblacion()
 {
+}
+
+std::vector<Individuo> Poblacion::getPobladores()
+{
+	return pobladores;
+}
+
+void Poblacion::setPoblador(int pos, Individuo poblador_)
+{
+	pobladores[pos] = poblador_;
+}
+
+void Poblacion::calculaAptitudPoblacion()
+{
+	double poblacion = 0.0;
+	for (int i = 0; i < pobladores.size(); i++)
+	{
+		poblacion = poblacion + pobladores[i].getAptitud();
+	}
+	aptitud_Poblacion = poblacion / pobladores.size();
+}
+
+void Poblacion::setAptitudPoblacion(double aptitudP)
+{
+	aptitud_Poblacion = aptitudP;
+}
+
+double Poblacion::getAptitudPoblacion()
+{
+	return aptitud_Poblacion;
+}
+
+Individuo Poblacion::getPobladorPorCelda(int posicion_)
+{	
+	return pobladores[posicion_];
 }
 
 void Poblacion::GeneradorDePoblacion(int cantidad, int numero_de_dias_, int numero_de_periodos_, int numero_de_cursos_, int numero_de_profesores_,
@@ -30,4 +71,26 @@ void Poblacion::GeneradorDePoblacion(int cantidad, int numero_de_dias_, int nume
 int Poblacion::size()
 {
 	return pobladores.size();
+}
+
+Individuo Poblacion::getIndividuoMasApto(int offset)
+{
+	std::sort(pobladores.begin(), pobladores.end(), SortByAptitud{});
+	return pobladores[offset];
+}
+
+void Poblacion::shuffle()
+{
+	//Random rnd = new Random();
+	for (int i = pobladores.size() - 1; i > 0; i--) {
+		int index = std::rand() % pobladores.size();//int index = rnd.nextInt(i + 1);
+		Individuo a = pobladores[index];
+		pobladores[index] = pobladores[i];
+		pobladores[i] = a;
+	}
+}
+
+void Poblacion::ordenarPoblacionDecendente()
+{
+	std::sort(pobladores.begin(), pobladores.end(), SortByAptitud{});
 }

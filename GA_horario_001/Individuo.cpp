@@ -302,6 +302,46 @@ categoria Individuo::getGenomaS(int pos)
 	return genomaS[pos];
 }
 
+void Individuo::setGenomaS(int pos, categoria valor)
+{
+	genomaS[pos] = valor;
+}
+
+int Individuo::getNumeroDeDias()
+{
+	return numero_de_dias;
+}
+
+int Individuo::getNumeroDePeriodos()
+{
+	return numero_de_periodos;
+}
+
+int Individuo::getNumeroDeCursos()
+{
+	return numero_de_cursos;
+}
+
+int Individuo::getNumeroDeProfesores()
+{
+	return numero_de_profesores;
+}
+
+int Individuo::getNumeroDeMaterias()
+{
+	return numero_de_materias;
+}
+
+int Individuo::getNumeroDeAulas()
+{
+	return numero_de_aulas;
+}
+
+int Individuo::sizeGenomaS()
+{
+	return genomaS.size();
+}
+
 void Individuo::crearGenomaS(int numero_de_dias, int numero_de_periodos, int numero_de_cursos)
 {
 	int cantidad_cromosomas = numero_de_dias * numero_de_periodos;// *numero_de_cursos;
@@ -1169,6 +1209,6 @@ int Individuo::calculaAptitudIndividuo()
 
 	setAptitud(aptitudColegio);
 
-	std::cout << "aptitud: " << std::to_string(aptitudColegio) <<" contErrores:" << std::to_string(contErrores) << "cantidad: " << std::to_string((numero_de_cursos * numero_de_periodos * numero_de_dias))<<"\n";
+	//std::cout << "aptitud: " << std::to_string(aptitudColegio) <<" contErrores:" << std::to_string(contErrores) << "cantidad: " << std::to_string((numero_de_cursos * numero_de_periodos * numero_de_dias))<<"\n";
 	return 0;
 }
